@@ -108,7 +108,7 @@ EXTRA_DIST = \
 	whatsnew-2.1.txt \
 	$(PLATFORM_DEPENDENT_SRC)
 
-LIBEVENT_LIBS_LA = libevent.la libevent_core.la libevent_extra.la
+LIBEVENT_LIBS_LA = libevent_core.la libevent_extra.la
 if PTHREADS
 LIBEVENT_LIBS_LA += libevent_pthreads.la
 LIBEVENT_PKGCONFIG += libevent_pthreads.pc
@@ -204,10 +204,6 @@ MAYBE_CORE =
 endif
 
 GENERIC_LDFLAGS = -version-info $(VERSION_INFO) $(RELEASE) $(NO_UNDEFINED)
-
-libevent_la_SOURCES = $(CORE_SRC) $(EXTRA_SRC)
-libevent_la_LIBADD = @LTLIBOBJS@ $(SYS_LIBS)
-libevent_la_LDFLAGS = $(GENERIC_LDFLAGS)
 
 libevent_core_la_SOURCES = $(CORE_SRC)
 libevent_core_la_LIBADD = @LTLIBOBJS@ $(SYS_LIBS)

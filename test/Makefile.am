@@ -99,7 +99,7 @@ if BUILD_WIN32
 regress_SOURCES += regress_iocp.c
 endif
 
-regress_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent.la $(PTHREAD_LIBS) $(ZLIB_LIBS)
+regress_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent_core.la ../libevent_extra.la $(PTHREAD_LIBS) $(ZLIB_LIBS)
 regress_CPPFLAGS = $(AM_CPPFLAGS) $(PTHREAD_CFLAGS) $(ZLIB_CFLAGS)
 regress_LDFLAGS = $(PTHREAD_CFLAGS)
 
@@ -109,11 +109,11 @@ regress_LDADD += ../libevent_openssl.la -lssl -lcrypto ${OPENSSL_LIBADD}
 endif
 
 bench_SOURCES = bench.c
-bench_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent.la
+bench_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent_core.la
 bench_cascade_SOURCES = bench_cascade.c
-bench_cascade_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent.la
+bench_cascade_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent_core.la
 bench_http_SOURCES = bench_http.c
-bench_http_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent.la
+bench_http_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent_core.la ../libevent_extra.la
 bench_httpclient_SOURCES = bench_httpclient.c
 bench_httpclient_LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent_core.la
 
@@ -136,4 +136,4 @@ DISTCLEANFILES = *~
 verify: check
 
 bench test-init test-eof test-weof test-time test-changelist \
-	test-fdleak: ../libevent.la
+	test-fdleak: ../libevent_core.la ../libevent_extra.la
